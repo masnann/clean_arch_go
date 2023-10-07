@@ -1,11 +1,11 @@
 package config
 
 import (
-	"github.com/joho/godotenv"
-	"github.com/sirupsen/logrus"
-	"gorm.io/gorm"
 	"os"
 	"strconv"
+
+	"github.com/sirupsen/logrus"
+	"gorm.io/gorm"
 )
 
 var DB *gorm.DB
@@ -36,12 +36,12 @@ func InitConfig() *Config {
 func loadConfig() *Config {
 
 	var res = new(Config)
-	err := godotenv.Load(".env")
+	// err := godotenv.Load(".env")
 
-	if err != nil {
-		logrus.Fatal("Config : cannot load config file", err.Error())
-		return nil
-	}
+	// if err != nil {
+	// 	logrus.Fatal("Config : cannot load config file", err.Error())
+	// 	return nil
+	// }
 
 	if value, found := os.LookupEnv("SERVER"); found {
 		port, err := strconv.Atoi(value)
